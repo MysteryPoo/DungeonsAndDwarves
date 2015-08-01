@@ -29,6 +29,7 @@
 Parent = noone;
 Crash = false;
 Flame = false;
+Ice = false;
 Auto = false;
 Path = -1;
 </string>
@@ -196,9 +197,10 @@ image_angle += irandom_range( -20, 20 );
     if( other.id != Parent &amp;&amp; !other.HitTimer ) {
         other.Hit = true;
         if( Flame )
-            other.Health -= 2;
-        else
-            --other.Health;
+            other.OnFire = true;
+        if( Ice )
+            other.Frozen = true;
+        --other.Health;
         instance_destroy();
     }
 }

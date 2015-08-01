@@ -37,6 +37,8 @@ Weapon = noone;
 WeaponAngle = 0;
 Defence = noone;
 Value = 0;
+OnFire = false;
+Frozen = false;
 </string>
           </argument>
         </arguments>
@@ -105,6 +107,28 @@ if( collision_rectangle( x - Width, _y - Height, x + Width, _y + Height, obj_Col
     y = yprevious;
     vspeed = 0;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( Frozen )
+    speed = 0;
 </string>
           </argument>
         </arguments>
@@ -180,10 +204,14 @@ if( Hit ) {
           <argument>
             <kind>1</kind>
             <string>/// Draw Health
-if( HitTimer % 3 == 0 )
-    image_blend = c_white;
-else
+if( HitTimer % 3 == 0 ) {
+    if( Frozen )
+        image_blend = c_blue;
+    else
+        image_blend = c_white;
+} else {
     image_blend = c_red;
+}
 draw_self();
 var _PercentHealth = Health / MaxHealth;
 var _HealthBarWidth = 32;
@@ -199,6 +227,13 @@ if( _PercentHealth &gt; 0.67 ) {
     draw_rectangle_colour( x - _HealthBarWidth * _PercentHealth, y + 32,
                             x + _HealthBarWidth * _PercentHealth, y + 42,
                             c_red, c_maroon, c_red, c_black, false );
+}
+if( OnFire ) {
+    var _x = x;// - 32 * dcos( image_angle - 45 );
+    var _y = y;// + 32 * dsin( image_angle - 45 );
+    effect_create_below( ef_smoke, _x, _y, 1, c_red );
+    effect_create_below( ef_smoke, _x, _y, 1, c_yellow );
+    effect_create_below( ef_smokeup, _x, _y, 1, c_gray );
 }
 </string>
           </argument>

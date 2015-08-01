@@ -33,8 +33,9 @@ Cooldown = room_speed;
 OnCooldown = false;
 // Buffs
 MultiShot = false;
-AutoShot = true;
+AutoShot = false;
 Flame = false;
+Ice = true;
 </string>
           </argument>
         </arguments>
@@ -103,6 +104,7 @@ if( Drawn &amp;&amp; !Active ) {
     _Arrow.image_angle = Parent.WeaponAngle;
     _Arrow.speed = 20;
     _Arrow.Flame = Flame;
+    _Arrow.Ice = Ice;
     _Arrow.Auto = AutoShot;
     if( MultiShot ) {
         _Arrow = instance_create( x, y, obj_Arrow );
@@ -111,6 +113,7 @@ if( Drawn &amp;&amp; !Active ) {
         _Arrow.image_angle = Parent.WeaponAngle + 15;
         _Arrow.speed = 20;
         _Arrow.Flame = Flame;
+        _Arrow.Ice = Ice;
         _Arrow.Auto = AutoShot;
         _Arrow = instance_create( x, y, obj_Arrow );
         _Arrow.Parent = Parent;
@@ -118,6 +121,7 @@ if( Drawn &amp;&amp; !Active ) {
         _Arrow.image_angle = Parent.WeaponAngle - 15;
         _Arrow.speed = 20;
         _Arrow.Flame = Flame;
+        _Arrow.Ice = Ice;
         _Arrow.Auto = AutoShot;
     }
     image_xscale = 1;
