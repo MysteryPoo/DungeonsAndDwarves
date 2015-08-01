@@ -48,6 +48,7 @@
     </objects>
     <objects name="Entities">
       <object>objects\obj_Entity</object>
+      <object>objects\obj_Enemy</object>
       <object>objects\obj_Dwarf</object>
       <object>objects\obj_Skelly</object>
       <object>objects\obj_FireMinion</object>
@@ -67,6 +68,7 @@
     <object>objects\obj_Button</object>
     <object>objects\obj_Door</object>
     <object>objects\obj_Key</object>
+    <object>objects\obj_Camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Demo</room>
