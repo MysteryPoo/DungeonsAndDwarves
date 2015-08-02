@@ -69,13 +69,15 @@
     <object>objects\obj_Door</object>
     <object>objects\obj_Key</object>
     <object>objects\obj_Camera</object>
+    <object>objects\obj_Frozen</object>
+    <object>objects\obj_Flame</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Demo</room>
   </rooms>
   <constants number="2">
     <constant name="DEBUG">1</constant>
-    <constant name="CONTROLS">"GAMEPAD"</constant>
+    <constant name="CONTROLS">"VIRTUAL"</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

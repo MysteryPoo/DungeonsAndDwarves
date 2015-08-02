@@ -196,11 +196,11 @@ image_angle += irandom_range( -20, 20 );
             <string>if( !Crash ) {
     if( other.id != Parent &amp;&amp; !other.HitTimer ) {
         other.Hit = true;
-        if( Flame )
-            other.OnFire = true;
-        if( Ice )
-            other.Frozen = true;
         --other.Health;
+        if( Ice ) {
+            var _Ice = instance_create( other.x, other.y, obj_Frozen );
+            _Ice.Parent = other.id;
+        }
         instance_destroy();
     }
 }
