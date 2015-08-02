@@ -1434,6 +1434,12 @@
     <tile bgName="bg_Wall" x="1728" y="288" w="32" h="32" xo="96" yo="32" id="10001535" name="inst_1E1BF791" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_Wall" x="1760" y="288" w="32" h="32" xo="32" yo="64" id="10001536" name="inst_0B8D57A8" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_Wall" x="1792" y="288" w="32" h="32" xo="64" yo="64" id="10001537" name="inst_21FA1628" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="192" y="32" w="64" h="125" xo="0" yo="0" id="10001543" name="inst_0CB484D5" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="352" y="32" w="64" h="125" xo="0" yo="0" id="10001544" name="inst_D1190B14" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="512" y="32" w="64" h="125" xo="0" yo="0" id="10001545" name="inst_85EEA1D7" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="672" y="32" w="64" h="125" xo="0" yo="0" id="10001546" name="inst_11D8DDF5" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="352" y="992" w="64" h="125" xo="0" yo="0" id="10001547" name="inst_3327655D" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="-1"/>
+    <tile bgName="bg_Plant_1" x="224" y="992" w="64" h="125" xo="0" yo="0" id="10001548" name="inst_16DD9DAE" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="-1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

@@ -71,6 +71,11 @@ if( irandom(100) &gt; 70 ) {
     Weapon = instance_create( x, y, obj_Bow );
     Weapon.Parent = id;
     Weapon.Flame = choose(true,false);
+} else {
+    Weapon = instance_create( x, y, obj_Sword );
+    Weapon.Parent = id;
+    Weapon.visible = false;
+    //Weapon.Flame = choose(true,false);
 }
 </string>
           </argument>
@@ -162,8 +167,10 @@ switch( State ) {
     case "Track_Start":
         if( instance_exists( obj_Dwarf ) )
             State = "Track";
-        else
+        else {
             State = "Idle_Start";
+            exit;
+        }
         StateTimer = room_speed;
         if( Weapon != noone &amp;&amp; instance_exists( Weapon ) ) {
             if( Weapon.object_index == obj_Bow ) {
@@ -176,19 +183,24 @@ switch( State ) {
                     direction = 90 + point_direction( obj_Dwarf.x, obj_Dwarf.y, x, y );
                 }
                 speed = 2;
-            }
-            Weapon.Active = !Weapon.Active;
-        } else {
-            var _dist = distance_to_object( obj_Dwarf );
-            if( _dist &gt; 32 ) {
-                direction = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
                 sprite_index = spr_Skeleton_Walk;
-                speed = 3;
-            } else {
-                direction = 90 + point_direction( obj_Dwarf.x, obj_Dwarf.y, x, y );
-                speed = 0;
-                sprite_index = spr_Skeleton_Swing;
+                Weapon.Active = !Weapon.Active;
+            } else if( Weapon.object_index == obj_Sword ) {
+                var _dist = distance_to_object( obj_Dwarf );
+                if( _dist &gt; 32 ) {
+                    direction = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
+                    sprite_index = spr_Skeleton_Walk;
+                    speed = 3;
+                    Weapon.Active = false;
+                } else {
+                    direction = 90 + point_direction( obj_Dwarf.x, obj_Dwarf.y, x, y );
+                    speed = 0;
+                    sprite_index = spr_Skeleton_Swing;
+                    Weapon.Active = true;
+                }
             }
+        } else {
+            
         }
         break;
     case "Track":

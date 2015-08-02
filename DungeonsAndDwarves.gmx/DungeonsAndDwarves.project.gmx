@@ -27,10 +27,12 @@
     <sprite>sprites\spr_Treasure</sprite>
     <sprite>sprites\spr_Shield</sprite>
     <sprite>sprites\spr_Key</sprite>
+    <sprite>sprites\spr_Bomb</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Wall</background>
     <background>background\bg_Ground</background>
+    <background>background\bg_Plant_1</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
@@ -55,10 +57,12 @@
       <object>objects\obj_FireMinion</object>
     </objects>
     <objects name="Weapons">
+      <object>objects\obj_Weapon</object>
       <object>objects\obj_Sword</object>
       <object>objects\obj_Bow</object>
       <object>objects\obj_Arrow</object>
       <object>objects\obj_Shield</object>
+      <object>objects\obj_Bomb</object>
     </objects>
     <object>objects\obj_Collider</object>
     <object>objects\obj_Persistent</object>
