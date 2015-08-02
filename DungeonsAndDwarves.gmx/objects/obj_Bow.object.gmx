@@ -35,7 +35,7 @@ OnCooldown = false;
 MultiShot = false;
 AutoShot = false;
 Flame = false;
-Ice = true;
+Ice = false;
 </string>
           </argument>
         </arguments>

@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Properties
-Width = 32;
-Height = 32;
+Width = 16;
+Height = 16;
 Health = 10;
 MaxHealth = Health;
 Hit = false;

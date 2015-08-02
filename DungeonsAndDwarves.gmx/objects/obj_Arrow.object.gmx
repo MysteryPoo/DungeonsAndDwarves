@@ -83,7 +83,15 @@ else {
           <argument>
             <kind>1</kind>
             <string>if( !Crash &amp;&amp; Auto ) {
-    var _Target = instance_nearest( x, y, obj_Enemy );
+    if( !instance_exists( Parent ) ) {
+        Auto = false;
+        exit;
+    }
+    var _Target;
+    if( Parent.object_index != obj_Dwarf )
+        _Target = instance_nearest( x, y, obj_Dwarf );
+    else
+        _Target = instance_nearest( x, y, obj_Enemy );
     if( _Target != noone ) {
         mp_potential_settings( 45, 45, room_speed * 160, true );
         mp_potential_step_object( _Target.x, _Target.y, 5, obj_Collider );
@@ -201,6 +209,10 @@ image_angle += irandom_range( -20, 20 );
             var _Ice = instance_create( other.x, other.y, obj_Frozen );
             _Ice.Parent = other.id;
         }
+        if( Flame ) {
+            var _Flame = instance_create( other.x, other.y, obj_Flame );
+            _Flame.Parent = other.id;
+        }
         instance_destroy();
     }
 }
@@ -232,6 +244,14 @@ if( Flame ) {
     var _y = y - 32 * dsin( image_angle );
     effect_create_above( ef_smoke, _x, _y, 0.1, c_red );
     effect_create_above( ef_smoke, _x, _y, 0.1, c_yellow );
+    //effect_create_above( ef_smoke, _x, _y, 0.1, c_gray );
+}
+if( Ice ) {
+    var _x = x + 32 * dcos( image_angle );
+    var _y = y - 32 * dsin( image_angle );
+    effect_create_above( ef_smoke, _x, _y, 0.1, c_blue );
+    effect_create_above( ef_smoke, _x, _y, 0.1, c_teal );
+    effect_create_above( ef_smoke, _x, _y, 0.1, c_white );
     //effect_create_above( ef_smoke, _x, _y, 0.1, c_gray );
 }
 </string>

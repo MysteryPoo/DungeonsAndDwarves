@@ -13,6 +13,7 @@
     <sprites name="Skeleton">
       <sprite>sprites\spr_Skeleton_Idle</sprite>
       <sprite>sprites\spr_Skeleton_Walk</sprite>
+      <sprite>sprites\spr_Skeleton_Swing</sprite>
     </sprites>
     <sprite>sprites\spr_Collision</sprite>
     <sprite>sprites\spr_Sword</sprite>
@@ -71,13 +72,14 @@
     <object>objects\obj_Camera</object>
     <object>objects\obj_Frozen</object>
     <object>objects\obj_Flame</object>
+    <object>objects\obj_EndLevel</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Demo</room>
   </rooms>
   <constants number="2">
     <constant name="DEBUG">1</constant>
-    <constant name="CONTROLS">"VIRTUAL"</constant>
+    <constant name="CONTROLS">"GAMEPAD"</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

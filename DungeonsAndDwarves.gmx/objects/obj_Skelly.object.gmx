@@ -64,45 +64,14 @@ Value = 5;
           <argument>
             <kind>1</kind>
             <string>/// Special Properties
-alarm[0] = room_speed;
 image_speed = 0.3;
-Weapon = instance_create( x, y, obj_Bow );
-Weapon.Parent = id;
-Weapon.Flame = choose(true,false);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>alarm[0] = room_speed;
-if( sprite_index == spr_Skeleton_Idle ) {
-    direction = irandom(360);
-    sprite_index = spr_Skeleton_Walk;
-    image_angle = direction;
-    speed = 2;
-} else {
-    sprite_index = spr_Skeleton_Idle;
-    speed = 0;
+State = "Idle_Start";
+StateTimer = 0;
+if( irandom(100) &gt; 70 ) {
+    Weapon = instance_create( x, y, obj_Bow );
+    Weapon.Parent = id;
+    Weapon.Flame = choose(true,false);
 }
-if( Weapon != noone )
-    Weapon.Active = !Weapon.Active;
 </string>
           </argument>
         </arguments>
@@ -139,16 +108,106 @@ if( Weapon != noone )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( instance_exists( obj_Dwarf ) ) {
-    var _Wall = collision_line( x, y, obj_Dwarf.x, obj_Dwarf.y, obj_Collider, false, false );
-    if( _Wall == noone &amp;&amp; distance_to_object( obj_Dwarf ) &lt; 256 ) {
-        if( obj_Dwarf.x &gt; x )
-            image_angle = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y + 16 );
+            <string>/// Timer
+if( StateTimer &gt; 0 )
+    --StateTimer;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// State Management
+switch( State ) {
+    case "Idle_Start":
+        State = "Idle";
+        StateTimer = room_speed;
+        sprite_index = spr_Skeleton_Idle;
+        speed = 0;
+        break;
+    case "Idle":
+        if( StateTimer == 0 )
+            State = choose( "Idle_Start", "Wander_Start" );
+        if( distance_to_object( obj_Dwarf ) &lt; 256 )
+            State = "Track_Start";
+        break;
+    case "Wander_Start":
+        State = "Wander";
+        StateTimer = room_speed;
+        sprite_index = spr_Skeleton_Walk;
+        direction = irandom(360);
+        image_angle = direction;
+        speed = 2;
+        break;
+    case "Wander":
+        if( StateTimer == 0 )
+            State = choose( "Idle_Start", "Wander_Start" );
+        if( distance_to_object( obj_Dwarf ) &lt; 256 )
+            State = "Track_Start";
+        break;
+    case "Track_Start":
+        if( instance_exists( obj_Dwarf ) )
+            State = "Track";
         else
-            image_angle = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y - 16 );
-    }
+            State = "Idle_Start";
+        StateTimer = room_speed;
+        if( Weapon != noone &amp;&amp; instance_exists( Weapon ) ) {
+            if( Weapon.object_index == obj_Bow ) {
+                var _dist = distance_to_object( obj_Dwarf );
+                if(  _dist &lt; 128 ) {
+                    direction = point_direction( obj_Dwarf.x, obj_Dwarf.y, x, y );
+                } else if( _dist &gt; 256 ) {
+                    direction = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
+                } else {
+                    direction = 90 + point_direction( obj_Dwarf.x, obj_Dwarf.y, x, y );
+                }
+                speed = 2;
+            }
+            Weapon.Active = !Weapon.Active;
+        } else {
+            var _dist = distance_to_object( obj_Dwarf );
+            if( _dist &gt; 32 ) {
+                direction = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
+                sprite_index = spr_Skeleton_Walk;
+                speed = 3;
+            } else {
+                direction = 90 + point_direction( obj_Dwarf.x, obj_Dwarf.y, x, y );
+                speed = 0;
+                sprite_index = spr_Skeleton_Swing;
+            }
+        }
+        break;
+    case "Track":
+        if( StateTimer == 0 )
+            State = "Track_Start";
+        if( instance_exists( obj_Dwarf ) ) {
+            var _Wall = collision_line( x, y, obj_Dwarf.x, obj_Dwarf.y, obj_Collider, false, false );
+            if( _Wall == noone &amp;&amp; distance_to_object( obj_Dwarf ) &lt; 256 ) {
+                if( obj_Dwarf.x &gt; x )
+                    image_angle = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y + 16 );
+                else
+                    image_angle = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y - 16 );
+            }
+        } else
+            State = "Idle_Start";
+        break;
 }
-WeaponAngle = image_angle;
+if( Weapon != noone )
+    WeaponAngle = image_angle;
 </string>
           </argument>
         </arguments>

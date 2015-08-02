@@ -52,6 +52,17 @@ Timer = room_speed * 2;
             <kind>1</kind>
             <string>if( Timer &gt; 0 )
     --Timer;
+else
+    instance_destroy();
+if( instance_exists( Parent ) ) {
+    if( Timer mod room_speed == 0 ) {
+        Parent.Hit = true;
+        --Parent.Health;
+    }
+    x = Parent.x;
+    y = Parent.y;
+} else
+    instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -74,9 +85,11 @@ Timer = room_speed * 2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>effect_create_above( ef_smoke, x, y, 1, c_yellow );
-effect_create_above( ef_smoke, x, y, 1, c_red );
-effect_create_above( ef_smokeup, x, y, 1, c_gray );
+            <string>var _x = x + irandom_range( -32, 32 );
+var _y = y + irandom_range( -32, 32 );
+effect_create_above( ef_smoke, _x, _y, 0.1, c_yellow );
+effect_create_above( ef_smoke, _x, _y, 0.1, c_red );
+effect_create_above( ef_smokeup, _x, _y, 0.1, c_gray );
 </string>
           </argument>
         </arguments>

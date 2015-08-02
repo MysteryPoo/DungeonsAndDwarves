@@ -59,7 +59,6 @@
     <instance objName="obj_Collider" x="800" y="128" name="inst_3070C99D" locked="0" code="" scaleX="2" scaleY="15" colour="4294967295" rotation="0"/>
     <instance objName="obj_Collider" x="416" y="480" name="inst_BBCD2D81" locked="0" code="" scaleX="2" scaleY="14" colour="4294967295" rotation="0"/>
     <instance objName="obj_Collider" x="160" y="128" name="inst_8F39A058" locked="0" code="" scaleX="1" scaleY="25" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Collider" x="1728" y="128" name="inst_0DCC3CB9" locked="0" code="" scaleX="1" scaleY="25" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spawner" x="288" y="832" name="inst_11F6DEAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spawner" x="704" y="768" name="inst_862F5DBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spawner" x="704" y="192" name="inst_60DB4536" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -75,6 +74,10 @@
     <instance objName="obj_Door" x="160" y="256" name="inst_DEA334BD" locked="0" code="" scaleX="1.68421053886414" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="1760" y="256" name="inst_D987B2BD" locked="0" code="" scaleX="1.68421053886414" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Camera" x="64" y="32" name="inst_378F3925" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Collider" x="1728" y="128" name="inst_7699A6FB" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Collider" x="1728" y="288" name="inst_250B5726" locked="0" code="" scaleX="1" scaleY="20" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Key" x="672" y="576" name="inst_2E0AF9F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_EndLevel" x="1760" y="224" name="inst_2E08E399" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Ground" x="192" y="128" w="32" h="32" xo="0" yo="0" id="10000071" name="inst_F4812472" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
