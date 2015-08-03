@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>/// Properties
+Health = 1;
 Score = 0;
 Restart = false;
 Difficulty = 0;
@@ -55,6 +56,11 @@ HasKey = false;
             <string>if( !instance_exists( obj_Dwarf ) &amp;&amp; !instance_exists( obj_CountDown ) &amp;&amp; 
     mouse_check_button_pressed( mb_left ) ) {
     instance_create( 0, 0, obj_CountDown );
+}
+if( Restart ) {
+    instance_create( 0, 0, obj_Persistent );
+    instance_destroy();
+    room_restart();
 }
 </string>
           </argument>

@@ -74,7 +74,7 @@ if( irandom(100) &gt; 70 ) {
 } else {
     Weapon = instance_create( x, y, obj_Sword );
     Weapon.Parent = id;
-    Weapon.visible = false;
+    //Weapon.visible = false;
     //Weapon.Flame = choose(true,false);
 }
 </string>
@@ -187,7 +187,7 @@ switch( State ) {
                 Weapon.Active = !Weapon.Active;
             } else if( Weapon.object_index == obj_Sword ) {
                 var _dist = distance_to_object( obj_Dwarf );
-                if( _dist &gt; 32 ) {
+                if( _dist &gt; 64 ) {
                     direction = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
                     sprite_index = spr_Skeleton_Walk;
                     speed = 3;
@@ -200,7 +200,7 @@ switch( State ) {
                 }
             }
         } else {
-            
+            Weapon.Active = false;
         }
         break;
     case "Track":
