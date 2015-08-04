@@ -27,10 +27,14 @@
             <kind>1</kind>
             <string>/// Properties
 Health = 1;
-Score = 0;
 Restart = false;
 Difficulty = 0;
 HasKey = false;
+Score = 5000;
+Weapon = obj_Sword;
+Flame = false;
+Ice = false;
+Cooldown = 1;
 </string>
           </argument>
         </arguments>
@@ -53,14 +57,47 @@ HasKey = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( !instance_exists( obj_Dwarf ) &amp;&amp; !instance_exists( obj_CountDown ) &amp;&amp; 
+            <string>if( room == rm_MainMenu || room == rm_Store )
+    exit;
+if( !instance_exists( obj_Dwarf ) &amp;&amp; !instance_exists( obj_CountDown ) &amp;&amp; 
     mouse_check_button_pressed( mb_left ) ) {
     instance_create( 0, 0, obj_CountDown );
 }
 if( Restart ) {
-    instance_create( 0, 0, obj_Persistent );
-    instance_destroy();
-    room_restart();
+    Restart = false;
+    HasKey = false;
+    Health = 1;
+    Difficulty = 0;
+    room_goto( rm_Store );
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with( obj_Dwarf ) {
+    Weapon = instance_create( x, y, other.Weapon );
+    Weapon.Parent = id;
+    Weapon.Flame = other.Flame;
+    Weapon.Ice = other.Ice;
+    Weapon.Cooldown /= other.Cooldown;
 }
 </string>
           </argument>
@@ -84,19 +121,25 @@ if( Restart ) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( instance_exists( obj_Dwarf ) ) {
-    draw_set_font( fnt_Score );
-    draw_set_colour( c_yellow );
-    draw_set_halign( fa_left );
-    draw_set_valign( fa_top );
-    draw_text( 30, 30, "Score: " + string( Score ) );
+            <string>if( room == rm_MainMenu ) {
+
+} else if( room == rm_Store ) {
+    draw_text_transformed( 30, 30, "Funds: " + string( Score ), 2, 2, 0 );
 } else {
-    draw_set_font( fnt_Score );
-    draw_set_colour( c_red );
-    draw_set_halign( fa_center );
-    draw_set_valign( fa_center );
-    draw_text( view_wview[0] * 0.5, view_hview[0] * 0.5 - 100, "YOU LOSE!" );
-    draw_text( view_wview[0] * 0.5, view_hview[0] * 0.5, "Score: " + string( Score ) );
+    if( instance_exists( obj_Dwarf ) ) {
+        draw_set_font( fnt_Score );
+        draw_set_colour( c_yellow );
+        draw_set_halign( fa_left );
+        draw_set_valign( fa_top );
+        draw_text( 30, 30, "Score: " + string( Score ) );
+    } else {
+        draw_set_font( fnt_Score );
+        draw_set_colour( c_red );
+        draw_set_halign( fa_center );
+        draw_set_valign( fa_center );
+        draw_text( view_wview[0] * 0.5, view_hview[0] * 0.5 - 100, "YOU LOSE!" );
+        draw_text( view_wview[0] * 0.5, view_hview[0] * 0.5, "Score: " + string( Score ) );
+    }
 }
 </string>
           </argument>

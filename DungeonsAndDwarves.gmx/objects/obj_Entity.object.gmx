@@ -127,7 +127,7 @@ if( collision_rectangle( x - Width, _y - Height, x + Width, _y + Height, obj_Col
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Hit
+            <string>/// HitTimer
 if( HitTimer &gt; 0 )
     --HitTimer;
 </string>
@@ -150,7 +150,7 @@ if( HitTimer &gt; 0 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Death
+            <string>/// Damage
 if( Health &lt;= 0 )
     instance_destroy();
 if( Hit ) {

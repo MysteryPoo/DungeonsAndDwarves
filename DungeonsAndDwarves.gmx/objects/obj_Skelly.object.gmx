@@ -67,16 +67,6 @@ Value = 5;
 image_speed = 0.3;
 State = "Idle_Start";
 StateTimer = 0;
-if( irandom(100) &gt; 70 ) {
-    Weapon = instance_create( x, y, obj_Bow );
-    Weapon.Parent = id;
-    Weapon.Flame = choose(true,false);
-} else {
-    Weapon = instance_create( x, y, obj_Sword );
-    Weapon.Parent = id;
-    //Weapon.visible = false;
-    //Weapon.Flame = choose(true,false);
-}
 </string>
           </argument>
         </arguments>
@@ -143,6 +133,8 @@ switch( State ) {
         StateTimer = room_speed;
         sprite_index = spr_Skeleton_Idle;
         speed = 0;
+        if( Weapon != noone &amp;&amp; instance_exists( Weapon ) )
+            Weapon.Active = false;
         break;
     case "Idle":
         if( StateTimer == 0 )
@@ -171,26 +163,28 @@ switch( State ) {
             State = "Idle_Start";
             exit;
         }
-        StateTimer = room_speed;
         if( Weapon != noone &amp;&amp; instance_exists( Weapon ) ) {
             if( Weapon.object_index == obj_Bow ) {
                 var _dist = distance_to_object( obj_Dwarf );
                 if(  _dist &lt; 128 ) {
                     direction = point_direction( obj_Dwarf.x, obj_Dwarf.y, x, y );
+                    speed = 2.5;
                 } else if( _dist &gt; 256 ) {
                     direction = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
+                    speed = 5;
                 } else {
                     direction = 90 + point_direction( obj_Dwarf.x, obj_Dwarf.y, x, y );
+                    speed = 2.5;
                 }
-                speed = 2;
                 sprite_index = spr_Skeleton_Walk;
                 Weapon.Active = !Weapon.Active;
+                StateTimer = room_speed;
             } else if( Weapon.object_index == obj_Sword ) {
                 var _dist = distance_to_object( obj_Dwarf );
-                if( _dist &gt; 64 ) {
+                if( _dist &gt; 48 ) {
                     direction = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
                     sprite_index = spr_Skeleton_Walk;
-                    speed = 3;
+                    speed = 4;
                     Weapon.Active = false;
                 } else {
                     direction = 90 + point_direction( obj_Dwarf.x, obj_Dwarf.y, x, y );
@@ -198,9 +192,8 @@ switch( State ) {
                     sprite_index = spr_Skeleton_Swing;
                     Weapon.Active = true;
                 }
+                StateTimer = room_speed * 0.1;
             }
-        } else {
-            Weapon.Active = false;
         }
         break;
     case "Track":

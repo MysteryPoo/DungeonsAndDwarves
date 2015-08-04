@@ -7,7 +7,138 @@
   <persistent>0</persistent>
   <parentName>obj_Weapon</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Properties
+Parent = noone;
+Fuse = room_speed * 3;
+ExplosionTimer = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>speed = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( speed == 0 &amp;&amp; ExplosionTimer == -1 ) {
+    if( Fuse &gt; 0 )
+        --Fuse;
+    else
+        ExplosionTimer = room_speed;
+}
+if( ExplosionTimer &gt; 0 ) {
+    --ExplosionTimer;
+    with( obj_Entity ) {
+        if( distance_to_object( other ) &lt; 32 &amp;&amp; !HitTimer ) {
+            Hit = true;
+            --Health;
+        }
+    }
+} else if( ExplosionTimer == 0 )
+    instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( Fuse &gt; room_speed * 2 )
+    draw_self();
+else if( Fuse &gt; room_speed ) {
+    if( Fuse mod 5 == 0 )
+        image_blend = c_red;
+    else
+        image_blend = c_white;
+    draw_self();
+} else if( Fuse &gt; 0 ) {
+    if( Fuse mod 2 == 0 )
+        image_blend = c_red;
+    else
+        image_blend = c_white;
+    draw_self();
+} else {
+    var _x = x + irandom_range( -32, 32 );
+    var _y = y - irandom_range( -32, 32 );
+    effect_create_above( ef_smoke, _x, _y, 0.1, c_red );
+    effect_create_above( ef_smoke, _x, _y, 0.1, c_yellow );
+    effect_create_above( ef_smokeup, _x, _y, 0.1, c_gray );
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

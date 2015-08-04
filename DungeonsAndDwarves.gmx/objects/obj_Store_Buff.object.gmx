@@ -25,15 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Properties
-Parent = noone;
-Active = false;
-// Buffs
-Flame = false;
-Ice = false;
-MultiShot = false;
-AutoShot = false;
-Cooldown = room_speed;
+            <string>Cost = 0;
 </string>
           </argument>
         </arguments>

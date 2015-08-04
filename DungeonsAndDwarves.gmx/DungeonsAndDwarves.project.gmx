@@ -28,11 +28,15 @@
     <sprite>sprites\spr_Shield</sprite>
     <sprite>sprites\spr_Key</sprite>
     <sprite>sprites\spr_Bomb</sprite>
+    <sprites name="MainMenu">
+      <sprite>sprites\spr_MainMenu_Play</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Wall</background>
     <background>background\bg_Ground</background>
     <background>background\bg_Plant_1</background>
+    <background>background\bg_MainMenu</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
@@ -77,8 +81,22 @@
     <object>objects\obj_Frozen</object>
     <object>objects\obj_Flame</object>
     <object>objects\obj_EndLevel</object>
+    <object>objects\obj_Buff</object>
+    <objects name="MainMenu">
+      <object>objects\obj_MainMenu_Play</object>
+    </objects>
+    <objects name="Store">
+      <object>objects\obj_Store_Start</object>
+      <object>objects\obj_Store_Weapon</object>
+      <object>objects\obj_Store_Ice</object>
+      <object>objects\obj_Store_Flame</object>
+      <object>objects\obj_Store_Cooldown</object>
+      <object>objects\obj_Store_Buff</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_MainMenu</room>
+    <room>rooms\rm_Store</room>
     <room>rooms\rm_Demo</room>
   </rooms>
   <constants number="2">

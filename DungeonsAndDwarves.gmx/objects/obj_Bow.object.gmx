@@ -39,15 +39,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Properties
+            <string>/// Special Properties
 Drawn = false;
-Cooldown = room_speed;
 OnCooldown = false;
-// Buffs
-MultiShot = false;
-AutoShot = false;
-Flame = false;
-Ice = false;
 </string>
           </argument>
         </arguments>
@@ -100,7 +94,7 @@ Ice = false;
     image_angle = Parent.image_angle ;
 }
 if( Active &amp;&amp; !OnCooldown ) {
-    image_xscale += 0.1;
+    image_xscale += room_speed / Cooldown * 0.1;
     if( image_xscale &gt;= 2 ) {
         image_xscale = 2;
         Drawn = true;

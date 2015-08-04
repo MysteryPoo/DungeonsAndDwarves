@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>obj_Persistent.Health = obj_Dwarf.Health / obj_Dwarf.MaxHealth;
+obj_Persistent.Difficulty += 1;
 room_restart();
 </string>
           </argument>
