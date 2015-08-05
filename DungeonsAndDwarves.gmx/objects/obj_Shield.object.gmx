@@ -40,7 +40,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Special Properties
-Health = 10;
+MaxHealth = 10;
+Health = MaxHealth;
 Hit = false;
 HitTimer = 0;
 </string>
@@ -100,6 +101,49 @@ if( Hit ) {
     instance_destroy();
 if( Health &lt;= 0 )
     instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if( HitTimer % 3 == 0 ) {
+    image_blend = c_white;
+} else {
+    image_blend = c_red;
+}
+draw_self();
+var _PercentHealth = Health / MaxHealth;
+var _HealthBarWidth = 32;
+if( _PercentHealth &gt; 0.67 ) {
+    draw_rectangle_colour( x - _HealthBarWidth * _PercentHealth, y + 32,
+                            x + _HealthBarWidth * _PercentHealth, y + 42,
+                            c_green, c_lime, c_green, c_black, false );
+} else if( _PercentHealth &gt; 0.34 ) {
+    draw_rectangle_colour( x - _HealthBarWidth * _PercentHealth, y + 32,
+                            x + _HealthBarWidth * _PercentHealth, y + 42,
+                            c_yellow, c_orange, c_yellow, c_black, false );
+} else {
+    draw_rectangle_colour( x - _HealthBarWidth * _PercentHealth, y + 32,
+                            x + _HealthBarWidth * _PercentHealth, y + 42,
+                            c_red, c_maroon, c_red, c_black, false );
+}
 </string>
           </argument>
         </arguments>
