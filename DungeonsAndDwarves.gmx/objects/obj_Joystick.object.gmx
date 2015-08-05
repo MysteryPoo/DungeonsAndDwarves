@@ -62,15 +62,15 @@ if( CONTROLS == "VIRTUAL" ) {
     _mouse[1,0] = device_mouse_x_to_gui( 1 );
     _mouse[1,1] = device_mouse_y_to_gui( 1 );
     if( device_mouse_check_button_pressed( 0, mb_left ) ) {
-        if( _mouse[0,0] &gt; bbox_left &amp;&amp; _mouse[0,0] &lt; bbox_right
-            &amp;&amp; _mouse[0,1] &gt; bbox_top &amp;&amp; _mouse[0,1] &lt; bbox_bottom ) {
+        if( _mouse[0,0] &gt; bbox_left - 32 &amp;&amp; _mouse[0,0] &lt; bbox_right + 32
+            &amp;&amp; _mouse[0,1] &gt; bbox_top - 32 &amp;&amp; _mouse[0,1] &lt; bbox_bottom + 32 ) {
             Selected = true;
             DeviceID = 0;
         }
     }
     if( device_mouse_check_button_pressed( 1, mb_left ) ) {
-        if( _mouse[1,0] &gt; bbox_left &amp;&amp; _mouse[1,0] &lt; bbox_right
-            &amp;&amp; _mouse[1,1] &gt; bbox_top &amp;&amp; _mouse[1,1] &lt; bbox_bottom ) {
+        if( _mouse[1,0] &gt; bbox_left - 32 &amp;&amp; _mouse[1,0] &lt; bbox_right + 32
+            &amp;&amp; _mouse[1,1] &gt; bbox_top - 32 &amp;&amp; _mouse[1,1] &lt; bbox_bottom + 32 ) {
             Selected = true;
             DeviceID = 1;
         }

@@ -55,14 +55,18 @@ _mouse[1,0] = device_mouse_x_to_gui( 1 );
 _mouse[1,1] = device_mouse_y_to_gui( 1 );
 if( device_mouse_check_button_pressed( 0, mb_left ) ) {
     if(  point_distance( x, y, _mouse[0,0], _mouse[0,1] ) &lt; 32 ) {
-        if( !instance_exists( obj_Shield ) )
-        instance_create( 0, 0, obj_Shield );
+        if( !instance_exists( obj_Shield ) ) {
+            var _Shield = instance_create( 0, 0, obj_Shield );
+            _Shield.Parent = obj_Dwarf.id;
+        }
     }
 }
 if( device_mouse_check_button_pressed( 1, mb_left ) ) {
     if(  point_distance( x, y, _mouse[1,0], _mouse[1,1] ) &lt; 32 ) {
-        if( !instance_exists( obj_Shield ) )
-        instance_create( 0, 0, obj_Shield );
+        if( !instance_exists( obj_Shield ) ) {
+            var _Shield = instance_create( 0, 0, obj_Shield );
+            _Shield.Parent = obj_Dwarf.id;
+        }
     }
 }
 _mouse = 0; // Free up array

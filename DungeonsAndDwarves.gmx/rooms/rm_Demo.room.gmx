@@ -41,7 +41,7 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="960" hview="540" xport="0" yport="0" wport="1920" hport="1080" hborder="1920" vborder="1080" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="960" hview="540" xport="0" yport="0" wport="1920" hport="1080" hborder="1920" vborder="1080" hspeed="10" vspeed="10"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -51,15 +51,12 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_Dwarf" x="224" y="256" name="inst_2DB3F103" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Persistent" x="192" y="128" name="inst_1E83EB79" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Collider" x="160" y="96" name="inst_E688139E" locked="0" code="" scaleX="50" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Collider" x="160" y="928" name="inst_4D9735C1" locked="0" code="" scaleX="50" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Collider" x="1248" y="384" name="inst_5A657918" locked="0" code="" scaleX="5" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="obj_Collider" x="800" y="128" name="inst_3070C99D" locked="0" code="" scaleX="2" scaleY="15" colour="4294967295" rotation="0"/>
     <instance objName="obj_Collider" x="416" y="480" name="inst_BBCD2D81" locked="0" code="" scaleX="2" scaleY="14" colour="4294967295" rotation="0"/>
     <instance objName="obj_Collider" x="160" y="128" name="inst_8F39A058" locked="0" code="" scaleX="1" scaleY="25" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Collider" x="1728" y="128" name="inst_0DCC3CB9" locked="0" code="" scaleX="1" scaleY="25" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spawner" x="288" y="832" name="inst_11F6DEAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spawner" x="704" y="768" name="inst_862F5DBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spawner" x="704" y="192" name="inst_60DB4536" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -74,6 +71,12 @@
     <instance objName="obj_GUI_Bow" x="640" y="64" name="inst_8B286FA2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="160" y="256" name="inst_DEA334BD" locked="0" code="" scaleX="1.68421053886414" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="1760" y="256" name="inst_D987B2BD" locked="0" code="" scaleX="1.68421053886414" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Camera" x="64" y="32" name="inst_378F3925" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Collider" x="1728" y="128" name="inst_7699A6FB" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Collider" x="1728" y="288" name="inst_250B5726" locked="0" code="" scaleX="1" scaleY="20" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Key" x="672" y="576" name="inst_2E0AF9F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_EndLevel" x="1760" y="224" name="inst_2E08E399" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Dwarf" x="224" y="256" name="inst_2DB3F103" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Ground" x="192" y="128" w="32" h="32" xo="0" yo="0" id="10000071" name="inst_F4812472" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1430,6 +1433,12 @@
     <tile bgName="bg_Wall" x="1728" y="288" w="32" h="32" xo="96" yo="32" id="10001535" name="inst_1E1BF791" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_Wall" x="1760" y="288" w="32" h="32" xo="32" yo="64" id="10001536" name="inst_0B8D57A8" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_Wall" x="1792" y="288" w="32" h="32" xo="64" yo="64" id="10001537" name="inst_21FA1628" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="192" y="32" w="64" h="125" xo="0" yo="0" id="10001543" name="inst_0CB484D5" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="352" y="32" w="64" h="125" xo="0" yo="0" id="10001544" name="inst_D1190B14" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="512" y="32" w="64" h="125" xo="0" yo="0" id="10001545" name="inst_85EEA1D7" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="672" y="32" w="64" h="125" xo="0" yo="0" id="10001546" name="inst_11D8DDF5" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Plant_1" x="352" y="992" w="64" h="125" xo="0" yo="0" id="10001547" name="inst_3327655D" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="-1"/>
+    <tile bgName="bg_Plant_1" x="224" y="992" w="64" h="125" xo="0" yo="0" id="10001548" name="inst_16DD9DAE" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="-1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

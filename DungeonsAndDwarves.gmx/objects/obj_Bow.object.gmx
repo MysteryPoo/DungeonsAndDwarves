@@ -5,10 +5,24 @@
   <visible>-1</visible>
   <depth>-1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_Weapon</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,16 +39,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Properties
-Parent = noone;
+            <string>/// Special Properties
 Drawn = false;
-Active = false;
-Cooldown = room_speed;
 OnCooldown = false;
-// Buffs
-MultiShot = false;
-AutoShot = false;
-Flame = false;
 </string>
           </argument>
         </arguments>
@@ -87,7 +94,7 @@ Flame = false;
     image_angle = Parent.image_angle ;
 }
 if( Active &amp;&amp; !OnCooldown ) {
-    image_xscale += 0.1;
+    image_xscale += room_speed / Cooldown * 0.1;
     if( image_xscale &gt;= 2 ) {
         image_xscale = 2;
         Drawn = true;
@@ -103,13 +110,30 @@ if( Drawn &amp;&amp; !Active ) {
     _Arrow.image_angle = Parent.WeaponAngle;
     _Arrow.speed = 20;
     _Arrow.Flame = Flame;
+    _Arrow.Ice = Ice;
+    _Arrow.Auto = AutoShot;
+    if( MultiShot ) {
+        _Arrow = instance_create( x, y, obj_Arrow );
+        _Arrow.Parent = Parent;
+        _Arrow.direction = Parent.WeaponAngle + 15;
+        _Arrow.image_angle = Parent.WeaponAngle + 15;
+        _Arrow.speed = 20;
+        _Arrow.Flame = Flame;
+        _Arrow.Ice = Ice;
+        _Arrow.Auto = AutoShot;
+        _Arrow = instance_create( x, y, obj_Arrow );
+        _Arrow.Parent = Parent;
+        _Arrow.direction = Parent.WeaponAngle - 15;
+        _Arrow.image_angle = Parent.WeaponAngle - 15;
+        _Arrow.speed = 20;
+        _Arrow.Flame = Flame;
+        _Arrow.Ice = Ice;
+        _Arrow.Auto = AutoShot;
+    }
     image_xscale = 1;
     Drawn = false;
     OnCooldown = true;
-    if( MultiShot )
-        alarm[0] = 1;
-    else
-        alarm[0] = Cooldown;
+    alarm[0] = Cooldown;
 }
 </string>
           </argument>

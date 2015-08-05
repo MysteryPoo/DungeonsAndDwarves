@@ -26,8 +26,41 @@
           <argument>
             <kind>1</kind>
             <string>/// Properties
-var _Object = choose( obj_FireMinion, obj_Skelly );
-instance_change( _Object, true );
+switch( floor( obj_Persistent.Difficulty ) ) { // No clue if that will work
+    case 0:
+        instance_change( obj_Skelly, true );
+        Weapon = instance_create( x, y, obj_Sword );
+        Weapon.Parent = id;
+        break;
+    case 1:
+        instance_change( obj_Skelly, true );
+        Weapon = instance_create( x, y, obj_Bow );
+        Weapon.Parent = id;
+        break;
+    case 2:
+        instance_change( obj_Skelly, true );
+        Weapon = instance_create( x, y, obj_Bow );
+        Weapon.Parent = id;
+        if( irandom(100) &gt; 70 )
+            Weapon.Ice = true;
+        else
+            Weapon.AutoShot = true;
+        break;
+    default:
+        for( var i = 0; i &lt; obj_Persistent.Difficulty; ++i ) {
+            var Enemy = instance_create( x, y, obj_Skelly );
+            with( Enemy ) {
+                Weapon = instance_create( x, y, obj_Bow );
+                Weapon.Parent = id;
+                if( irandom(100) &gt; 70 )
+                    Weapon.Ice = true;
+                else
+                    Weapon.AutoShot = true;
+                break;
+            }
+        }
+        instance_destroy();
+}
 </string>
           </argument>
         </arguments>
