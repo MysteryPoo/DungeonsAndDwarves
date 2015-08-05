@@ -107,10 +107,12 @@ if( Timer &gt; 359 )
             <string>if( other.id != Parent &amp;&amp; !other.HitTimer ) {
     if( other.object_index != Parent.object_index ) {
         var _Shield = instance_place( x, y, obj_Shield );
-        if( _Shield != noone &amp;&amp; !_Shield.HitTimer ) {
-            _Shield.Hit = true;
-            _Shield.Health -= 1;
-            other.Hit = true;
+        if( _Shield != noone ) {
+            if( !_Shield.HitTimer ) {
+                _Shield.Hit = true;
+                _Shield.Health -= 1;
+            }
+            //other.Hit = true;
             var _Angle = point_direction( _Shield.x, _Shield.y, x, y );
             Parent.direction = _Angle;
             Parent.speed = 10;

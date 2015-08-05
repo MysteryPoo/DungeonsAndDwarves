@@ -39,7 +39,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Cost = 100;
+            <string>BaseCost = 100;
+Cost = 100;
 Enabled = false;
 if( obj_Persistent.Score &gt;= Cost )
     Enabled = true;
@@ -49,6 +50,20 @@ if( obj_Persistent.Score &gt;= Cost )
       </action>
     </event>
     <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -69,11 +84,6 @@ if( obj_Persistent.Score &gt;= Cost )
     Enabled = false;
     obj_Persistent.Score -= Cost;
     obj_Store_Weapon.Ice = true;
-    with( obj_Store_Buff ) {
-        Cost *= 3;
-        if( obj_Persistent.Score &lt; Cost )
-            Enabled = false;
-    }
 }
 </string>
           </argument>

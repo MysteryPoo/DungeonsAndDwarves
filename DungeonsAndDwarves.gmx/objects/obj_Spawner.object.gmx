@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Properties
-switch( floor( obj_Persistent.Difficulty ) ) { // No clue if that will work
+/*
+switch( floor( obj_Persistent.Difficulty ) ) {
     case 0:
         instance_change( obj_Skelly, true );
         Weapon = instance_create( x, y, obj_Sword );
@@ -60,6 +61,45 @@ switch( floor( obj_Persistent.Difficulty ) ) { // No clue if that will work
             }
         }
         instance_destroy();
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Properties
+var _Monster = obj_FireMinion;
+var _Weapon = noone;
+var _Rand = random(1) - 0.1 * obj_Persistent.Difficulty;
+if( _Rand &lt; 0.3 )
+    _Monster = obj_Skelly;
+if( _Monster == obj_Skelly ) {
+    _Rand += 0.1 * obj_Persistent.Difficulty;
+    _Weapon = obj_Bow;
+    if( _Rand &lt; 0.3 ) {
+        _Weapon = obj_Sword;
+    }
+}
+
+instance_change( _Monster, true );
+if( _Weapon != noone ) {
+    Weapon = instance_create( x, y, _Weapon );
+    Weapon.Parent = id;
 }
 </string>
           </argument>

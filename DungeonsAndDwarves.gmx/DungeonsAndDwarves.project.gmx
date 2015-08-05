@@ -101,7 +101,7 @@
   </rooms>
   <constants number="2">
     <constant name="DEBUG">1</constant>
-    <constant name="CONTROLS">"VIRTUAL"</constant>
+    <constant name="CONTROLS">"GAMEPAD"</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
