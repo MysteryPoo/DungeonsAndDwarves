@@ -28,7 +28,7 @@
             <string>/// Properties
 Health = 1;
 Restart = false;
-Difficulty = 0;
+Difficulty = 10;
 HasKey = false;
 Score = 5000;
 Weapon = obj_Sword;

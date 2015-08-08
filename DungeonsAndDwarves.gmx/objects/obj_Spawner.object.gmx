@@ -85,14 +85,34 @@ switch( floor( obj_Persistent.Difficulty ) ) {
             <string>/// Properties
 var _Monster = obj_FireMinion;
 var _Weapon = noone;
+var _Ice = false;
+var _Flame = false;
+var _Cooldown = room_speed;
+var _MultiShot = false;
+var _AutoShot = false;
 var _Rand = random(1) - 0.1 * obj_Persistent.Difficulty;
 if( _Rand &lt; 0.3 )
     _Monster = obj_Skelly;
 if( _Monster == obj_Skelly ) {
-    _Rand += 0.1 * obj_Persistent.Difficulty;
-    _Weapon = obj_Bow;
-    if( _Rand &lt; 0.3 ) {
+    _Rand = random(2) - 0.2 * obj_Persistent.Difficulty;
+    _Weapon = obj_Sword;
+    if( _Rand &lt; -3 ) {
+        _Weapon = obj_Bow;
+        _AutoShot = true;
+    } else if( _Rand &lt; -2.5 ) {
+        _Weapon = obj_Bow;
+        _Flame = true;
+    } else if( _Rand &lt; -2 ) {
+        _Weapon = obj_Bow;
+        _Ice = true;
+    } else if( _Rand &lt; -1.5 ) {
+        _Weapon = obj_Bow;
+        _MultiShot = true;
+    } else if( _Rand &lt; -1 ) {
         _Weapon = obj_Sword;
+        _Flame = true;
+    } else if( _Rand &lt; 0.3 ) {
+        _Weapon = obj_Bow;
     }
 }
 
@@ -100,6 +120,11 @@ instance_change( _Monster, true );
 if( _Weapon != noone ) {
     Weapon = instance_create( x, y, _Weapon );
     Weapon.Parent = id;
+    Weapon.Flame = _Flame;
+    Weapon.Ice = _Ice;
+    Weapon.MultiShot = _MultiShot;
+    Weapon.AutoShot = _AutoShot;
+    Weapon.Cooldown = _Cooldown;
 }
 </string>
           </argument>
